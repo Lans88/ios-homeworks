@@ -13,7 +13,7 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.systemRed
+        view.backgroundColor = UIColor.systemYellow
         title = "Лента"
         self.buttonPost.setTitle("Прочесть", for: .normal)
         buttonPost.addTarget(self, action: #selector(readPost), for: .touchUpInside)

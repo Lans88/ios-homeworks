@@ -16,6 +16,7 @@ class ProfileHeaderView: UIView {
         imageView.layer.borderColor = UIColor.white.cgColor
         return imageView
         }()
+    
     private lazy var nameLabel: UILabel = {
         let nameTextLabel = UILabel()
         nameTextLabel.text = "Anonimus"
@@ -23,19 +24,21 @@ class ProfileHeaderView: UIView {
         nameTextLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return nameTextLabel
         }()
-    private lazy var textLabel: UILabel = {
+    
+    var textLabel: UILabel = {
         let textLabel = UILabel()
         textLabel.text = "Waiting for something..."
         textLabel.textColor = .gray
         textLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return textLabel
         }()
-    private lazy var showButton: UIButton = {
+    
+    var showButton: UIButton = {
         let showStatusButton = UIButton()
         showStatusButton.backgroundColor = .blue
+        showStatusButton.setTitle("Show status", for: .normal)
         showStatusButton.layer.masksToBounds = true
         showStatusButton.layer.cornerRadius = 4
-        showStatusButton.setTitle("Show status", for: .normal)
         showStatusButton.layer.shadowOffset.width = 4
         showStatusButton.layer.shadowOffset.height = 4
         showStatusButton.layer.shadowRadius = 4
@@ -43,6 +46,7 @@ class ProfileHeaderView: UIView {
         showStatusButton.layer.shadowOpacity = 0.7
         return showStatusButton
         }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(avatarImage)
@@ -60,6 +64,12 @@ class ProfileHeaderView: UIView {
         nameLabel.frame = CGRect(x: avatarImage.frame.maxX + 16, y: 27, width: self.bounds.width - (avatarImage.frame.maxX + 16) - 16, height: 32)
         textLabel.frame = CGRect(x: avatarImage.frame.maxX + 16, y: avatarImage.frame.maxY - 16 - 34, width: self.bounds.width - (avatarImage.frame.maxX + 16) - 16, height: 32)
         showButton.frame = CGRect(x: 16, y: avatarImage.frame.maxY + 32, width: self.bounds.width - 16 - 16, height: 50)
+        showButton.addTarget(self, action: #selector(actionButtonShowStatus), for: .touchUpInside)
+    }
+    @objc func actionButtonShowStatus() {
+        print(textLabel.text)
     }
     
 }
+
+

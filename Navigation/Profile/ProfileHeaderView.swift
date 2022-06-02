@@ -37,13 +37,15 @@ class ProfileHeaderView: UIView {
         let showStatusButton = UIButton()
         showStatusButton.backgroundColor = .blue
         showStatusButton.setTitle("Show status", for: .normal)
-        showStatusButton.layer.masksToBounds = true
-        showStatusButton.layer.cornerRadius = 4
-        showStatusButton.layer.shadowOffset.width = 4
-        showStatusButton.layer.shadowOffset.height = 4
-        showStatusButton.layer.shadowRadius = 4
+        let cornerRadiusShadow: CGFloat = 4.0
+        showStatusButton.layer.masksToBounds = false
+        showStatusButton.layer.cornerRadius = cornerRadiusShadow
         showStatusButton.layer.shadowColor = UIColor.black.cgColor
+        showStatusButton.layer.shadowRadius = 4.0
         showStatusButton.layer.shadowOpacity = 0.7
+        showStatusButton.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+        let cgLayerShadowBezier = UIBezierPath(roundedRect: showStatusButton.bounds, byRoundingCorners: [.allCorners], cornerRadii: CGSize(width: cornerRadiusShadow, height: cornerRadiusShadow)).cgPath
+        showStatusButton.layer.shadowPath = cgLayerShadowBezier
         return showStatusButton
         }()
     

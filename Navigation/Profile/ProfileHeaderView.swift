@@ -52,22 +52,44 @@ class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(avatarImage)
+        avatarImage.translatesAutoresizingMaskIntoConstraints = false
         addSubview(nameLabel)
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(textLabel)
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(showButton)
+        showButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            avatarImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            avatarImage.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            avatarImage.widthAnchor.constraint(equalToConstant: 110),
+            avatarImage.heightAnchor.constraint(equalToConstant: 110),
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 27),
+            showButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            showButton.topAnchor.constraint(equalTo: avatarImage.topAnchor, constant: 126),
+            showButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            showButton.heightAnchor.constraint(equalToConstant: 50),
+            textLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
+            textLabel.topAnchor.constraint(equalTo: topAnchor, constant: 126 - 34)
+        ,
+            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+        ])
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        avatarImage.frame = CGRect(x: 16, y: 16, width: 110, height: 110)
-        nameLabel.frame = CGRect(x: avatarImage.frame.maxX + 16, y: 27, width: self.bounds.width - (avatarImage.frame.maxX + 16) - 16, height: 32)
-        textLabel.frame = CGRect(x: avatarImage.frame.maxX + 16, y: avatarImage.frame.maxY - 16 - 34, width: self.bounds.width - (avatarImage.frame.maxX + 16) - 16, height: 32)
-        showButton.frame = CGRect(x: 16, y: avatarImage.frame.maxY + 32, width: self.bounds.width - 16 - 16, height: 50)
-        showButton.addTarget(self, action: #selector(actionButtonShowStatus), for: .touchUpInside)
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        avatarImage.frame = CGRect(x: 16, y: 16, width: 110, height: 110)
+//        nameLabel.frame = CGRect(x: avatarImage.frame.maxX + 16, y: 27, width: self.bounds.width - (avatarImage.frame.maxX + 16) - 16, height: 32)
+//        textLabel.frame = CGRect(x: avatarImage.frame.maxX + 16, y: avatarImage.frame.maxY - 16 - 34, width: self.bounds.width - (avatarImage.frame.maxX + 16) - 16, height: 32)
+//        showButton.frame = CGRect(x: 16, y: avatarImage.frame.maxY + 32, width: self.bounds.width - 16 - 16, height: 50)
+//        showButton.addTarget(self, action: #selector(actionButtonShowStatus), for: .touchUpInside)
+//    }
     @objc func actionButtonShowStatus() {
         print(textLabel.text)
     }

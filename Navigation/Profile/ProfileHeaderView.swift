@@ -48,6 +48,8 @@ class ProfileHeaderView: UIView {
         showStatusButton.layer.shadowPath = cgLayerShadowBezier
         return showStatusButton
         }()
+
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -73,15 +75,15 @@ class ProfileHeaderView: UIView {
             showButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             showButton.heightAnchor.constraint(equalToConstant: 50),
             textLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
-            textLabel.topAnchor.constraint(equalTo: topAnchor, constant: 126 - 34)
-        ,
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            textLabel.topAnchor.constraint(equalTo: topAnchor, constant: 126 - 34),
+            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
         ])
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 //    override func layoutSubviews() {
 //        super.layoutSubviews()
 //        avatarImage.frame = CGRect(x: 16, y: 16, width: 110, height: 110)
@@ -90,6 +92,7 @@ class ProfileHeaderView: UIView {
 //        showButton.frame = CGRect(x: 16, y: avatarImage.frame.maxY + 32, width: self.bounds.width - 16 - 16, height: 50)
 //        showButton.addTarget(self, action: #selector(actionButtonShowStatus), for: .touchUpInside)
 //    }
+    
     @objc func actionButtonShowStatus() {
         print(textLabel.text)
     }

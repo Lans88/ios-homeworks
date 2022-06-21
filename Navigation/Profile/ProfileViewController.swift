@@ -26,10 +26,11 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .lightGray
         view.addSubview(profileHeaderView)
         view.addSubview(newButton)
+        newButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             newButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             newButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            newButton.topAnchor.constraint(equalTo: profileHeaderView.safeAreaLayoutGuide.bottomAnchor),
+            newButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             newButton.heightAnchor.constraint(equalToConstant: 50)
         ])
        

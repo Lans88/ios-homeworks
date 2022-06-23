@@ -37,15 +37,19 @@ class ProfileHeaderView: UIView {
         let showStatusButton = UIButton()
         showStatusButton.backgroundColor = .blue
         showStatusButton.setTitle("Show status", for: .normal)
-        let cornerRadiusShadow: CGFloat = 4.0
         showStatusButton.layer.masksToBounds = false
+        
+        let cornerRadiusShadow: CGFloat = 4.0
+        
         showStatusButton.layer.cornerRadius = cornerRadiusShadow
         showStatusButton.layer.shadowColor = UIColor.black.cgColor
         showStatusButton.layer.shadowRadius = 4.0
         showStatusButton.layer.shadowOpacity = 0.7
         showStatusButton.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+        
         let cgLayerShadowBezier = UIBezierPath(roundedRect: showStatusButton.bounds, byRoundingCorners: [.allCorners], cornerRadii: CGSize(width: cornerRadiusShadow, height: cornerRadiusShadow)).cgPath
         showStatusButton.layer.shadowPath = cgLayerShadowBezier
+        
         return showStatusButton
         }()
 
@@ -61,19 +65,23 @@ class ProfileHeaderView: UIView {
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(showButton)
         showButton.translatesAutoresizingMaskIntoConstraints = false
+        showButton.addTarget(self, action: #selector(actionButtonShowStatus), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             avatarImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             avatarImage.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             avatarImage.widthAnchor.constraint(equalToConstant: 110),
             avatarImage.heightAnchor.constraint(equalToConstant: 110),
+            
             nameLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
             nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 27),
+            
             showButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             showButton.topAnchor.constraint(equalTo: avatarImage.topAnchor, constant: 126),
             showButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             showButton.heightAnchor.constraint(equalToConstant: 50),
+            
             textLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
             textLabel.topAnchor.constraint(equalTo: topAnchor, constant: 126 - 34),
             textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
@@ -82,15 +90,6 @@ class ProfileHeaderView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-  override func layoutSubviews() {
-//        super.layoutSubviews()
-//        avatarImage.frame = CGRect(x: 16, y: 16, width: 110, height: 110)
-//        nameLabel.frame = CGRect(x: avatarImage.frame.maxX + 16, y: 27, width: self.bounds.width - (avatarImage.frame.maxX + 16) - 16, height: 32)
-//        textLabel.frame = CGRect(x: avatarImage.frame.maxX + 16, y: avatarImage.frame.maxY - 16 - 34, width: self.bounds.width - (avatarImage.frame.maxX + 16) - 16, height: 32)
-//        showButton.frame = CGRect(x: 16, y: avatarImage.frame.maxY + 32, width: self.bounds.width - 16 - 16, height: 50)
-        showButton.addTarget(self, action: #selector(actionButtonShowStatus), for: .touchUpInside)
     }
     
     @objc func actionButtonShowStatus() {

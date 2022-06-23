@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    //var profileViewContr = ProfileViewController()
+    
     var profileHeaderView = ProfileHeaderView()
     
     var newButton: UIButton = {
@@ -27,11 +27,13 @@ class ProfileViewController: UIViewController {
         view.addSubview(profileHeaderView)
         view.addSubview(newButton)
         newButton.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             newButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             newButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             newButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            newButton.heightAnchor.constraint(equalToConstant: 50)
+            newButton.heightAnchor.constraint(equalToConstant: 50),
+            
         ])
        
     }
@@ -39,9 +41,9 @@ class ProfileViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         profileHeaderView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.bounds.width, height: view.bounds.height - view.safeAreaInsets.top - view.safeAreaInsets.bottom)
-       
+
     }
-   
+
     
 
 }

@@ -19,6 +19,7 @@ class FeedViewController: UIViewController {
         buttonPost.addTarget(self, action: #selector(readPost), for: .touchUpInside)
         view.addSubview(buttonPost)
         buttonPost.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             buttonPost.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonPost.centerYAnchor.constraint(equalTo: view.centerYAnchor)

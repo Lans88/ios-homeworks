@@ -16,6 +16,7 @@ class InfoViewController: UIViewController {
         buttonAllert.addTarget(self, action: #selector(readAlert), for: .touchUpInside)
         view.addSubview(buttonAllert)
         buttonAllert.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             buttonAllert.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonAllert.centerYAnchor.constraint(equalTo: view.centerYAnchor)

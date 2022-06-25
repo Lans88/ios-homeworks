@@ -17,6 +17,7 @@
 		AC9038DF2834096F00B04ED0 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9038DE2834096F00B04ED0 /* InfoViewController.swift */; };
 		AC9038E12834098A00B04ED0 /* PostFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9038E02834098A00B04ED0 /* PostFile.swift */; };
 		ACB14B71283C835C00A593DD /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB14B70283C835C00A593DD /* ProfileHeaderView.swift */; };
+		ACCDD9F52866C9E300864D39 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCDD9F42866C9E300864D39 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		AC9038DE2834096F00B04ED0 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		AC9038E02834098A00B04ED0 /* PostFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFile.swift; sourceTree = "<group>"; };
 		ACB14B70283C835C00A593DD /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		ACCDD9F42866C9E300864D39 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				AC9038DA2834089E00B04ED0 /* ProfileViewController.swift */,
 				ACB14B70283C835C00A593DD /* ProfileHeaderView.swift */,
+				ACCDD9F42866C9E300864D39 /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			files = (
 				AC9038C9283404A400B04ED0 /* ViewController.swift in Sources */,
 				AC9038D92834087600B04ED0 /* FeedViewController.swift in Sources */,
+				ACCDD9F52866C9E300864D39 /* LogInViewController.swift in Sources */,
 				AC9038DB2834089E00B04ED0 /* ProfileViewController.swift in Sources */,
 				AC9038E12834098A00B04ED0 /* PostFile.swift in Sources */,
 				AC9038C5283404A400B04ED0 /* AppDelegate.swift in Sources */,

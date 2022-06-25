@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
         let navigationTape = UINavigationController(rootViewController: FeedViewController())
-        let navigationProfile = UINavigationController(rootViewController: ProfileViewController())
+        let navigationProfile = UINavigationController(rootViewController: LogInViewController())
         navigationTape.tabBarItem.title = "Лента"
         navigationProfile.tabBarItem.title = "Профиль"
         navigationTape.tabBarItem.image = UIImage(systemName: "t.square")

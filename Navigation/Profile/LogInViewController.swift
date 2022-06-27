@@ -65,7 +65,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         pass.delegate = self
         return pass
     }()
-    let notification = NotificationCenter.default
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,16 +73,13 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = .white
         layout()
     }
-    @objc func authorization() {
-        let profileViewController = ProfileViewController()
-        navigationController?.pushViewController(profileViewController, animated: true)
-    }
+    
     private func layout() {
+        view.addSubview(scrollView)
         view.addSubview(logoImage)
         view.addSubview(logInText)
-        view.addSubview(logInButton)
         view.addSubview(passText)
-        view.addSubview(scrollView)
+        view.addSubview(logInButton)
         NSLayoutConstraint.activate([
             logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 120),
@@ -110,8 +107,32 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
-
-
+    @objc func authorization() {
+        let profileViewController = ProfileViewController()
+        navigationController?.pushViewController(profileViewController, animated: true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(kboardShow), name: UIResponder.keyboardWillShowNotification, object: nil); notification.addObserver(self, selector: #selector(kboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    let notification = NotificationCenter.default
+        notification.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        notification.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    @objc private func kboardShow(notification: NSNotification) {
+    if let kboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+    scrollView.contentInset.bottom = kboardSize.height
+    scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: kboardSize.height, right: 0) }
+    }
+    @objc private func kboardHide(notification: NSNotification) { scrollView.contentInset.bottom = .zero; scrollView.verticalScrollIndicatorInsets = .zero
+    }
 }
 
 

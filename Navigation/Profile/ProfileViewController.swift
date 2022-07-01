@@ -6,8 +6,8 @@
 //
 
 import UIKit
-
 class ProfileViewController: UIViewController {
+    var publicArray = Public.setupArray()
     private lazy var publicTable: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false

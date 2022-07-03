@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 class ProfileHeaderView: UIView {
     private lazy var avatarImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "avatar"))
@@ -16,7 +15,6 @@ class ProfileHeaderView: UIView {
         imageView.layer.borderColor = UIColor.white.cgColor
         return imageView
         }()
-    
     private lazy var nameLabel: UILabel = {
         let nameTextLabel = UILabel()
         nameTextLabel.text = "Anonimus"
@@ -24,7 +22,6 @@ class ProfileHeaderView: UIView {
         nameTextLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return nameTextLabel
         }()
-    
     var textLabel: UILabel = {
         let textLabel = UILabel()
         textLabel.text = "Waiting for something..."
@@ -32,29 +29,21 @@ class ProfileHeaderView: UIView {
         textLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return textLabel
         }()
-    
     var showButton: UIButton = {
         let showStatusButton = UIButton()
         showStatusButton.backgroundColor = .blue
         showStatusButton.setTitle("Show status", for: .normal)
         showStatusButton.layer.masksToBounds = false
-        
         let cornerRadiusShadow: CGFloat = 4.0
-        
         showStatusButton.layer.cornerRadius = cornerRadiusShadow
         showStatusButton.layer.shadowColor = UIColor.black.cgColor
         showStatusButton.layer.shadowRadius = 4.0
         showStatusButton.layer.shadowOpacity = 0.7
         showStatusButton.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
-        
         let cgLayerShadowBezier = UIBezierPath(roundedRect: showStatusButton.bounds, byRoundingCorners: [.allCorners], cornerRadii: CGSize(width: cornerRadiusShadow, height: cornerRadiusShadow)).cgPath
         showStatusButton.layer.shadowPath = cgLayerShadowBezier
-        
         return showStatusButton
         }()
-
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(avatarImage)
@@ -87,15 +76,12 @@ class ProfileHeaderView: UIView {
             textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
         ])
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     @objc func actionButtonShowStatus() {
         print(textLabel.text)
     }
-    
 }
 
 

@@ -9,7 +9,6 @@ import UIKit
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     private var isNavigateionBarHidden: Bool = true
-    
     private var logoImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "logo"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,15 +64,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         pass.delegate = self
         return pass
     }()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         view.backgroundColor = .white
         layout()
     }
-    
     private func layout() {
         view.addSubview(scrollView)
         view.addSubview(logoImage)
@@ -134,8 +130,17 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @objc private func kboardHide(notification: NSNotification) { scrollView.contentInset.bottom = .zero; scrollView.verticalScrollIndicatorInsets = .zero
     }
 }
-
-
+class TextField: UITextField {
+    var textCustom = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.textRect(forBounds: bounds)
+        return rect.inset(by: textCustom)
+    }
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.editingRect(forBounds: bounds)
+        return rect.inset(by: textCustom)
+    }
+}
     
     
    

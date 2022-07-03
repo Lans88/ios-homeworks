@@ -13,14 +13,12 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
         return tableView
     }()
-   
-    
-    override func viewDidLoad() {
+   override func viewDidLoad() {
         super.viewDidLoad()
         layout()
-       
     }
     private func layout() {
         view.addSubview(publicTable)
@@ -32,25 +30,19 @@ class ProfileViewController: UIViewController {
         ])
     }
 }
-
 extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         publicArray.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        var content: UIListContentConfiguration = cell.defaultContentConfiguration()
-        content.text = publicArray[indexPath.row].author
-        content.image = UIImage(named: publicArray[indexPath.row].image)
-        content.text = publicArray[indexPath.row].description
-        content.text = "Likes: \(publicArray[indexPath.row].likes)"
-        content.text = "Views: \(publicArray[indexPath.row].views)"
-        cell.contentConfiguration = content
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as! PostTableViewCell
+        cell.authorPost.text = publicArray[indexPath.row].author
+        cell.imagePost.image = UIImage(named: publicArray[indexPath.row].image)
+        cell.descriptionPost.text = publicArray[indexPath.row].description
+        cell.likesPost.text = "Likes: \(String(publicArray[indexPath.row].likes))"
+        cell.viewsPost.text = "Views: \(String(publicArray[indexPath.row].views))"
         return cell
     }
-    
-    
 }
 extension ProfileViewController: UITableViewDelegate {
     

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
     private lazy var avatarImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "avatar"))
         imageView.layer.masksToBounds = true
@@ -22,7 +22,7 @@ class ProfileHeaderView: UIView {
         nameTextLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return nameTextLabel
         }()
-    var textLabel: UILabel = {
+    var label: UILabel = {
         let textLabel = UILabel()
         textLabel.text = "Waiting for something..."
         textLabel.textColor = .gray
@@ -44,14 +44,13 @@ class ProfileHeaderView: UIView {
         showStatusButton.layer.shadowPath = cgLayerShadowBezier
         return showStatusButton
         }()
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    private func setupLayout() {
         addSubview(avatarImage)
         avatarImage.translatesAutoresizingMaskIntoConstraints = false
         addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(textLabel)
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(showButton)
         showButton.translatesAutoresizingMaskIntoConstraints = false
         showButton.addTarget(self, action: #selector(actionButtonShowStatus), for: .touchUpInside)
@@ -71,16 +70,16 @@ class ProfileHeaderView: UIView {
             showButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             showButton.heightAnchor.constraint(equalToConstant: 50),
             
-            textLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
-            textLabel.topAnchor.constraint(equalTo: topAnchor, constant: 126 - 34),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            label.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
+            label.topAnchor.constraint(equalTo: topAnchor, constant: 126 - 34),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
         ])
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     @objc func actionButtonShowStatus() {
-        print(textLabel.text)
+        print(label.text)
     }
 }
 

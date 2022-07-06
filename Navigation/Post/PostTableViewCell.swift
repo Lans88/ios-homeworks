@@ -25,7 +25,7 @@ class PostTableViewCell: UITableViewCell {
             let imagePost = UIImageView()
             imagePost.translatesAutoresizingMaskIntoConstraints = false
             //imagePost.backgroundColor = .black
-            //imagePost.contentMode = .scaleAspectFit
+            imagePost.contentMode = .scaleAspectFill
             return imagePost
         }()
     var descriptionPost: UILabel = {
@@ -79,7 +79,7 @@ class PostTableViewCell: UITableViewCell {
             authorPost.topAnchor.constraint(equalTo: contView.topAnchor, constant: 16),
             
             imagePost.widthAnchor.constraint(equalTo: contView.widthAnchor),
-            imagePost.heightAnchor.constraint(equalToConstant: 250),
+            imagePost.heightAnchor.constraint(equalTo: contView.widthAnchor),
             imagePost.topAnchor.constraint(equalTo: authorPost.bottomAnchor, constant: 12),
             
             descriptionPost.leadingAnchor.constraint(equalTo: contView.leadingAnchor, constant: 16),

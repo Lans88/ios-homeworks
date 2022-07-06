@@ -45,5 +45,8 @@ extension ProfileViewController: UITableViewDataSource {
     }
 }
 extension ProfileViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+     UIView()
+    }
 }
+    
